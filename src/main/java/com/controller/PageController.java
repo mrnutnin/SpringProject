@@ -7,9 +7,9 @@ import com.Member;
 import com.MemberDAO;
 import com.model.CoinMarket;
 import com.model.CoinMarketList;
-import com.Currency;
+import com.model.Currency;
 import java.text.NumberFormat;
-import com.CoinMarketCap;
+import com.model.CoinMarketCap;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -40,28 +40,44 @@ public class PageController {
             @RequestParam("username") String username, @RequestParam("phone") String phone, Model model)
             throws SQLException {
 
-        member = new Member(email, password, username, phone);
+        member = new Member(email, password, username, phone, "user");
         model.addAttribute("member", member);
         memberDAO.createMember(member);
 
         return "/registered";
     }
 
-    @GetMapping("/listMember")
-    public String listMember(Model model) throws SQLException {
-    	ArrayList<Member> list = memberDAO.getAllMember();
-    	model.addAttribute("memberList", list);
-    	return "/list-Member";
+    @PostMapping("/listMember")
+    public String listMember(@RequestParam("permiss") String permiss, Model model) throws SQLException {
+        if (permiss.equals("admin")) {
+            ArrayList<Member> list = memberDAO.getAllMember();
+            model.addAttribute("memberList", list);
+            return "/list-Member";
+        }
+        return "/login-form";
+
     }
 
     @GetMapping("/deleteMember")
-    public String deleteMember(@RequestParam("email")  String email, Model model) throws SQLException {
+    public String deleteMember(@RequestParam("email") String email, Model model) throws SQLException {
         memberDAO.deleteMember(email);
         return "/delete-result";
     }
 
+    @PostMapping("/editProfile")
+    public String editProfile(@RequestParam("email") String email, Model model) throws SQLException {
+        Member member = memberDAO.getMemberForEidit(email);
+        model.addAttribute("member", member);
+        return "/edit-profile-form";
+    }
 
-
-   
+    @PostMapping("/updateMember")
+    public String updateMember(@RequestParam("email") String email, @RequestParam("password") String password,
+            @RequestParam("username") String username, @RequestParam("phone") String phone, Model model)
+            throws SQLException {
+        member = new Member(email, password, username, phone,"user");
+        memberDAO.updateMember(member);
+        return "/update-result";
+    }
 
 }

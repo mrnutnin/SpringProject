@@ -5,12 +5,21 @@ public class Member {
     private String password;
     private String username;
 	private String phone;
+	private String permiss;
+	
 
-    public Member(String email, String password, String username, String phone) {
+    public Member(String email, String password, String username, String phone, String permiss) {
         this.email = email;
         this.password = password;
         this.username = username;
-        this.phone = phone;
+		this.phone = phone;
+		this.permiss = permiss;
+	}
+	public String getPermiss() {
+		return permiss;
+	}
+	public void setPermiss(String permiss) {
+		this.permiss = permiss;
 	}
 
     public String getEmail() {

@@ -5,6 +5,7 @@
 <title>Cryptocurrency Market Mr'Nut</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/style.css">
+<script src="js/sort.js"></script>
 </head>
 
 <body>
@@ -12,17 +13,23 @@
   <h1 style="font-family:'Courier New'">
     Cryptocurrency Prices
   </h1>
+  <form action="${edit}" method="POST">
+    <input type="hidden" name="permiss" value="${hello.permiss}">
+    <input type="hidden" name="email" value="${hello.email}">
   <p style="font-family:'Courier New';color:black;">
-   Hello <span style="color:white;font-size:20px">${hello.username}</span>  , Welcome back! , <a href="${edit}" style="color:White;">${permiss}</a> , <a href="/" style="color:White;">Logout</a>
+   Hello <span style="color:white;font-size:20px">${hello.username}</span>  , Welcome back! , <button type="submit">${permiss}</button> 
   </p>
 
-<main>
-  <table>
+  </form>
 
+
+<main>
+  
+  <table id="myTable">
   <!-- Table Head -->
     <thead>
       <tr>
-        <th>Rank#</th>
+        <th onclick="sortTable()">Rank#</th>
         <th>Name</th>
         <th>Symbol</th>
         <th>Price : USD</th>
@@ -35,7 +42,7 @@
  <!-- Table Foot -->
     <tfoot>
       <tr>
-        <th colspan='7'></th>
+        <th colspan='7'><a href="/"><button>Logout</button></a></th>
       </tr>
     </tfoot>
 

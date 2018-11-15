@@ -25,7 +25,7 @@ public class MemberDAO {
 	// สร้างเมธอดสำหรับดึงข้อมูลจาก ResultSet มาเก็บใน JavaBeans
 	private Member mappingMember(ResultSet resultSet) throws SQLException {
 		Member member = new Member(resultSet.getString("email"), resultSet.getString("password"),
-				resultSet.getString("username"), resultSet.getString("phone"));
+				resultSet.getString("username"), resultSet.getString("phone"),resultSet.getString("permiss"));
 		return member; // ส่งกลับเป็น javabean
 	}
 
@@ -76,13 +76,23 @@ public class MemberDAO {
 		return member; 	// ส่งกลับเป็น javabean
 	}
 
+	public Member getMemberForEidit(String email) throws SQLException {		
+		Member member = null;
+		PreparedStatement pStatement = con.prepareStatement("SELECT * FROM member WHERE email = ? "); // เตรียมคำสั่ง SQL
+		pStatement.setString(1, email);	
+		ResultSet resultSet = pStatement.executeQuery(); // ส่งคำสั่ง SQL ไปยังฐานข้อมูล		
+		if (resultSet.next()) // ถ้าพบข้อมูล
+			member = mappingMember(resultSet); // นำผลลัพธ์ที่ฐานข้อมูลส่งกลับแปลงเป็น object
+		return member; 	// ส่งกลับเป็น javabean
+	}
+
 	public void deleteMember (String email) throws SQLException {	 
         PreparedStatement pStatement = con.prepareStatement("DELETE FROM member WHERE email = ?");
         pStatement.setString(1, email);
         pStatement.executeUpdate();
 	}
 
-/*
+
 	public static void main(String[] args) {
 		try {
 			// ก่อนใช้เมธอดต่างๆใน DAO ต้องสร้าง object ก่อน
@@ -91,9 +101,15 @@ public class MemberDAO {
 			MemberDAO memberDAO = new MemberDAO();
 
 			// เพิ่มข้อมูล
-			Member member = new Member("email", "password", "username", "phone");
-			memberDAO.createMember(member);
-
+			ArrayList<Member> list = memberDAO.getAllMember();
+       		 for (Member member : list) {
+				if (member.getEmail().equals("porinut1@gmail.com") && member.getPassword().equals("1234")) {
+					System.out.println("found");
+					System.out.println(member.getEmail());
+				}else{
+					System.out.println("not found");
+				}
+			}
 			// แก้ไขข้อมูล
 			// Product oldProduct = new Product(1, "Update Centrum", "สูตรใหม่", 400);
 			// productDAO.updateProduct(oldProduct);
@@ -102,6 +118,6 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 
 }

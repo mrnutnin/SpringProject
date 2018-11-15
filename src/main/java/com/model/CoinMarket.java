@@ -2,7 +2,7 @@ package com.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.Currency;
+
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;

@@ -1,7 +1,7 @@
 package com.api;
 
 //import com.CoinMarketCap;
-import com.Currency;
+import com.model.Currency;
 import com.model.CoinMarketList;
 import com.model.CoinMarketListApiResponse;
 

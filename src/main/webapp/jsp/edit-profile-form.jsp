@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="ดื" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login Page</title>
+	<title>Edit Page</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -32,62 +29,62 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" action="/overview" method="POST">
-				<a href="#"><img src="images/icons/favicon.ico" height="35" width="35"></a>
+				<form class="login100-form validate-form" action="/updateMember" method="POST">
+				<a href="/"><img src="images/icons/favicon.ico" height="35" width="35"></a>
 					<span class="login100-form-title p-b-55">
-						Sign In
+						Profile
 					</span>
 
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
+					<!-- Email -->
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz"> 
+						<input class="input100" type="text" name="email" placeholder="${member.email}" value="${member.email}" readonly>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-envelope"></span>
 						</span>
 					</div>
 
+					<!-- Password -->
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="${member.password}" value="${member.password}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>
 						</span>
 					</div>
 
+					<!-- Re-Password 
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+						<input class="input100" type="password" name="" placeholder="Re-Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+						</span>
+					</div>
+					-->
+
+					<!-- Username -->
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
+						<input class="input100" type="text" name="username" placeholder="${member.username}" value="${member.username}">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+						</span>
+					</div>
+
+					<!-- Phone -->
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Phone is required">
+						<input class="input100" type="text" name="phone" placeholder="${member.phone}" value="${member.phone}">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+						</span>
+					</div>
 
 					<div class="container-login100-form-btn p-t-25">
 						<button class="login100-form-btn" type="submit">
-							Sign In
+							Save
 						</button>
 					</div>
 
-
-					<!--
-					<div class="text-center w-full p-t-42 p-b-22">
-						<span class="txt1">
-							Or login with
-						</span>
-					</div>
-
-					<a href="#" class="btn-face m-b-10">
-						<i class="fa fa-facebook-official"></i>
-						Facebook
-					</a>
-
-					<a href="#" class="btn-google m-b-10">
-						<img src="images/icons/icon-google.png" alt="GOOGLE">
-						Google
-					</a>
-					-->
-
-					<div class="text-center w-full p-t-115">
-						<span class="txt1">
-							Not a member?
-						</span>
-
-						<a class="txt1 bo1 hov1" href="/register">
-							Sign up now							
-						</a>
 					</div>
 				</form>
 			</div>

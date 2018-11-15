@@ -3,16 +3,20 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="utf-8">
 <title>List Member</title>
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/tableAdmin.css">
+<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 </head>
+
 <script>
 	function myFunction(email) {
 		if (confirm('Are you sure?')== true)
 		 window.location.href = '/deleteMember?email='+email;}
 </script>
+
 <body>
 <a href="/"><img src="images/icons/favicon.ico" height="35" width="35"></a><br>
 <h1 style="font-family:'Courier New'">
@@ -23,7 +27,7 @@
 </p>
 
 <main>
-  <table>
+  <table  class="table-fill">
 
   <!-- Table Head -->
     <thead>
@@ -36,12 +40,7 @@
       </tr>
     </thead>
 
- <!-- Table Foot -->
-    <tfoot>
-      <tr>
-        <th colspan='7'></th>
-      </tr>
-    </tfoot>
+   
 
  <!-- Table Body -->
     <tbody>
