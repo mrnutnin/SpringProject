@@ -5,6 +5,7 @@
 <head>
 	<title>Registered Page</title>
 	<meta charset="UTF-8">
+	<meta http-equiv=refresh content=2;URL="/">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -33,10 +34,6 @@
 			<a href="/"><img src="images/icons/favicon.ico" height="35" width="35"></a>
 				<span class="login100-form-title p-b-55">
 						Registered!!
-                        ${member.email}<br>
-                        ${member.password}<br>
-                        ${member.username}<br>
-                        ${member.phone}<br>
 				</span>          
 			</div>
 		</div>

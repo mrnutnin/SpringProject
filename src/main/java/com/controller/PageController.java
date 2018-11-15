@@ -47,8 +47,8 @@ public class PageController {
         return "/registered";
     }
 
-    @PostMapping("/signin")
-    public String signin(@RequestParam("email") String email, @RequestParam("password") String password, Model model)
+    @PostMapping("/overview")
+    public String overview(@RequestParam("email") String email, @RequestParam("password") String password, Model model)
             throws SQLException {
         ArrayList<Member> list = memberDAO.getAllMember();
         for (Member member : list) {
