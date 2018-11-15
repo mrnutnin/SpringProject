@@ -1,15 +1,10 @@
 package com;
 
-import java.util.Collection;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-
 public class Member {
     private String email;
     private String password;
     private String username;
-    private String phone;
+	private String phone;
 
     public Member(String email, String password, String username, String phone) {
         this.email = email;
@@ -17,12 +12,6 @@ public class Member {
         this.username = username;
         this.phone = phone;
 	}
-	
-	/*
-    public Member(String email, String password, Collection<? extends GrantedAuthority> authorities) {
-        super();
-	}
-	*/
 
     public String getEmail() {
 		return email;

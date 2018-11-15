@@ -46,11 +46,12 @@ public class MemberDAO {
 
 	public void createMember(Member member) throws SQLException {
 		PreparedStatement pStatement = con
-				.prepareStatement("INSERT INTO member (email, password, username, phone) VALUES (?, ?, ?, ?)");
+				.prepareStatement("INSERT INTO member (email, password, username, phone, permiss) VALUES (?, ?, ?, ?, ?)");
 		pStatement.setString(1, member.getEmail());
 		pStatement.setString(2, member.getPassword());
 		pStatement.setString(3, member.getUsername());
 		pStatement.setString(4, member.getPhone());
+		pStatement.setString(5, "user");
 		pStatement.executeUpdate();
 	}
 
@@ -73,6 +74,12 @@ public class MemberDAO {
 		if (resultSet.next()) // ถ้าพบข้อมูล
 			member = mappingMember(resultSet); // นำผลลัพธ์ที่ฐานข้อมูลส่งกลับแปลงเป็น object
 		return member; 	// ส่งกลับเป็น javabean
+	}
+
+	public void deleteMember (String email) throws SQLException {	 
+        PreparedStatement pStatement = con.prepareStatement("DELETE FROM member WHERE email = ?");
+        pStatement.setString(1, email);
+        pStatement.executeUpdate();
 	}
 
 /*

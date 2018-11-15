@@ -13,16 +13,16 @@
     Cryptocurrency Prices
   </h1>
   <p style="font-family:'Courier New';color:black;">
-   Hello <span style="color:white;font-size:20px">${hello.username}</span>  , Welcome back!
+   Hello <span style="color:white;font-size:20px">${hello.username}</span>  , Welcome back! , <a href="${edit}" style="color:White;">${permiss}</a> , <a href="/" style="color:White;">Logout</a>
   </p>
- 
+
 <main>
   <table>
 
   <!-- Table Head -->
     <thead>
       <tr>
-        <th>#</th>
+        <th>Rank#</th>
         <th>Name</th>
         <th>Symbol</th>
         <th>Price : USD</th>
@@ -143,6 +143,8 @@
       </tr>
 
     </tbody>
+   
+  
   </table>
 </main>
  
