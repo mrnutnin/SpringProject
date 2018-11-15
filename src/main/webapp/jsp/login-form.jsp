@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ดื" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +32,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" action="/overview" method="POST">
+				<form class="login100-form validate-form" action="/${request.contextPath}/j_spring_security_check" method="POST">
 				<a href="#"><img src="images/icons/favicon.ico" height="35" width="35"></a>
 					<span class="login100-form-title p-b-55">
 						Sign In
@@ -50,7 +54,7 @@
 						</span>
 					</div>
 
-					
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					<div class="container-login100-form-btn p-t-25">
 						<button class="login100-form-btn" type="submit">
 							Sign In
