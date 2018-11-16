@@ -11,11 +11,6 @@
 <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 </head>
 
-<script>
-	function myFunction() 
-		return confirm('Are you sure?');
-</script>
-
 <body>
 <a href="/"><img src="images/icons/favicon.ico" height="35" width="35"></a><br>
 <h1 style="font-family:'Courier New'">
@@ -35,7 +30,7 @@
   <thead>
     <tr>
       <th>Email</th>
-  <th>Password</th>
+      <th>Password</th>
       <th>Username</th>
       <th>Phone</th>
 		<th>#</th>

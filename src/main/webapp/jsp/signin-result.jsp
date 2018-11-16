@@ -33,8 +33,9 @@
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
 			<a href="/"><img src="images/icons/favicon.ico" height="35" width="35"></a>
 				<span class="login100-form-title p-b-55">
-						Sign In Fail !!
-				</span>          
+						Sign In Fail !! 
+				</span> 
+					      
 			</div>
 		</div>
 	</div>

@@ -52,16 +52,18 @@
 							<span class="lnr lnr-lock"></span>
 						</span>
 					</div>
+			
 
-					<!-- Re-Password 
+					<!-- Re-Password 	
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="" placeholder="Re-Password">
+						<input class="input100" type="password" name="passwordConf" placeholder="Re-Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>
 						</span>
 					</div>
-					-->
+				-->
+					
 
 					<!-- Username -->
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">

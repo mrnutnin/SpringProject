@@ -39,16 +39,23 @@ public class PageController {
     public String addMember(@RequestParam("email") String email, @RequestParam("password") String password,
             @RequestParam("username") String username, @RequestParam("phone") String phone, Model model)
             throws SQLException {
-
-        member = new Member(email, password, username, phone, "user");
-        model.addAttribute("member", member);
-        memberDAO.createMember(member);
+        Member m = memberDAO.getMemberForSignUp(email);
+        if (m != null) {
+            model.addAttribute("result", "Register Fail!!.");
+            model.addAttribute("detail", "This email is already used.");
+        } else {
+            member = new Member(email, password, username, phone, "user");
+            memberDAO.createMember(member);
+            model.addAttribute("result", "Registered !!.");
+            model.addAttribute("detail", "Welcome to Cryptocurrency Market!!");
+        }
 
         return "/registered";
     }
 
     @PostMapping("/listMember")
-    public String listMember(@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("permiss") String permiss, Model model) throws SQLException {
+    public String listMember(@RequestParam("email") String email, @RequestParam("password") String password,
+            @RequestParam("permiss") String permiss, Model model) throws SQLException {
         if (permiss.equals("admin")) {
             ArrayList<Member> list = memberDAO.getAllMember();
             model.addAttribute("memberList", list);
@@ -62,9 +69,10 @@ public class PageController {
     }
 
     @PostMapping("/deleteMember")
-    public String deleteMember(@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("permiss") String permiss, Model model) throws SQLException {
+    public String deleteMember(@RequestParam("email") String email, @RequestParam("password") String password,
+            @RequestParam("permiss") String permiss, Model model) throws SQLException {
         Member member = memberDAO.getAdmin(permiss);
-        if (permiss.equals("admin")){
+        if (permiss.equals("admin")) {
             memberDAO.deleteMember(email);
             ArrayList<Member> list = memberDAO.getAllMember();
             model.addAttribute("memberList", list);
@@ -72,8 +80,8 @@ public class PageController {
             model.addAttribute("password", member.getPassword());
             model.addAttribute("permiss", member.getPermiss());
             return "/list-Member";
-        }   
-        return "/login-form";    
+        }
+        return "/login-form";
     }
 
     @PostMapping("/editProfile")
@@ -87,7 +95,7 @@ public class PageController {
     public String updateMember(@RequestParam("email") String email, @RequestParam("password") String password,
             @RequestParam("username") String username, @RequestParam("phone") String phone, Model model)
             throws SQLException {
-        member = new Member(email, password, username, phone,"user");
+        member = new Member(email, password, username, phone, "user");
         memberDAO.updateMember(member);
         return "/update-result";
     }

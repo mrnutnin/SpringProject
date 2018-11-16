@@ -65,6 +65,16 @@ public class MemberDAO {
 		pStatement.executeUpdate();
 	}
 
+	public Member getMemberForSignUp(String email) throws SQLException {		
+		Member member = null;
+		PreparedStatement pStatement = con.prepareStatement("SELECT * FROM member WHERE email = ?"); // เตรียมคำสั่ง SQL
+		pStatement.setString(1, email);	
+		ResultSet resultSet = pStatement.executeQuery(); // ส่งคำสั่ง SQL ไปยังฐานข้อมูล		
+		if (resultSet.next()) // ถ้าพบข้อมูล
+			member = mappingMember(resultSet); // นำผลลัพธ์ที่ฐานข้อมูลส่งกลับแปลงเป็น object
+		return member; 	// ส่งกลับเป็น javabean
+	}
+
 	public Member getMember(String email, String password) throws SQLException {		
 		Member member = null;
 		PreparedStatement pStatement = con.prepareStatement("SELECT * FROM member WHERE email = ? AND password = ?"); // เตรียมคำสั่ง SQL
