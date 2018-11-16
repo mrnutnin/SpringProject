@@ -12,9 +12,8 @@
 </head>
 
 <script>
-	function myFunction(email) {
-		if (confirm('Are you sure?')== true)
-    window.location.href = '/deleteMember?email='+email+'&permiss=admin';}
+	function myFunction() 
+		return confirm('Are you sure?');
 </script>
 
 <body>
@@ -25,11 +24,10 @@
 <p>
 <form action="/overview" method="POST"> 
 <input type="hidden" name="email" value="${email}">
-<input type="hidden" name="password" value="${pass}">
+<input type="hidden" name="password" value="${password}">
 <input type="submit" value="Back to Market">
 </form>
 </p>
-
 <main>
 <table  class="table-fill">
 
@@ -55,7 +53,14 @@
 				<td>${member.password}</td>
 				<td>${member.username}</td>
 				<td>${member.phone}</td>
-         		<td><button onclick="myFunction('${member.email}')">delete</button></td>
+             <td>
+                  <form action="/deleteMember" method="POST" onSubmit="if(!confirm('Are you sure?')){return false;}">
+                    <input type="hidden" name="email" value="${member.email}">
+                    <input type="hidden" name="password" value="${password}">
+                    <input type="hidden" name="permiss" value="${permiss}">
+                    <input type="submit" value="delete">
+                  </form>
+              </td>
          	</tr>
 		</c:forEach>
 

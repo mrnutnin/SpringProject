@@ -76,6 +76,16 @@ public class MemberDAO {
 		return member; 	// ส่งกลับเป็น javabean
 	}
 
+	public Member getAdmin(String permiss) throws SQLException {		
+		Member member = null;
+		PreparedStatement pStatement = con.prepareStatement("SELECT * FROM member WHERE permiss = ?"); // เตรียมคำสั่ง SQL
+		pStatement.setString(1, permiss);		
+		ResultSet resultSet = pStatement.executeQuery(); // ส่งคำสั่ง SQL ไปยังฐานข้อมูล		
+		if (resultSet.next()) // ถ้าพบข้อมูล
+			member = mappingMember(resultSet); // นำผลลัพธ์ที่ฐานข้อมูลส่งกลับแปลงเป็น object
+		return member; 	// ส่งกลับเป็น javabean
+	}
+
 	public Member getMemberForEidit(String email) throws SQLException {		
 		Member member = null;
 		PreparedStatement pStatement = con.prepareStatement("SELECT * FROM member WHERE email = ? "); // เตรียมคำสั่ง SQL

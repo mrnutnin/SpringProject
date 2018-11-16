@@ -47,24 +47,33 @@ public class PageController {
         return "/registered";
     }
 
-    @GetMapping("/listMember")
-    public String listMember(@RequestParam("permiss") String permiss, Model model) throws SQLException {
+    @PostMapping("/listMember")
+    public String listMember(@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("permiss") String permiss, Model model) throws SQLException {
         if (permiss.equals("admin")) {
             ArrayList<Member> list = memberDAO.getAllMember();
             model.addAttribute("memberList", list);
-            model.addAttribute("email", "admin@admin.com");
-            model.addAttribute("pass", "admin");
+            model.addAttribute("email", email);
+            model.addAttribute("password", password);
+            model.addAttribute("permiss", permiss);
             return "/list-Member";
         }
         return "/login-form";
 
     }
 
-    @GetMapping("/deleteMember")
-    public String deleteMember(@RequestParam("email") String email,@RequestParam("permiss") String permiss, Model model) throws SQLException {
-        memberDAO.deleteMember(email);
-        model.addAttribute("permiss", permiss);
-        return "/delete-result";
+    @PostMapping("/deleteMember")
+    public String deleteMember(@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("permiss") String permiss, Model model) throws SQLException {
+        Member member = memberDAO.getAdmin(permiss);
+        if (permiss.equals("admin")){
+            memberDAO.deleteMember(email);
+            ArrayList<Member> list = memberDAO.getAllMember();
+            model.addAttribute("memberList", list);
+            model.addAttribute("email", member.getEmail());
+            model.addAttribute("password", member.getPassword());
+            model.addAttribute("permiss", member.getPermiss());
+            return "/list-Member";
+        }   
+        return "/login-form";    
     }
 
     @PostMapping("/editProfile")

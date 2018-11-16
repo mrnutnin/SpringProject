@@ -33,12 +33,14 @@ public class ViewCoinController {
                member = memberDAO.getMember(email, password);
                if(member!=null){
                     if (member.getPermiss().equals("admin")) {
-                        model.addAttribute("permiss", "ViewMember");
+                        model.addAttribute("permiss", member.getPermiss());
+                        model.addAttribute("status", "ViewMember");
                         model.addAttribute("edit", "/listMember");
                         model.addAttribute("hello",member);
-                        model.addAttribute("method","GET");
+                        model.addAttribute("method","POST");
                     } else {
-                        model.addAttribute("permiss", "EditProfile");
+                        model.addAttribute("permiss", member.getPermiss());
+                        model.addAttribute("status", "EditProfile");
                         model.addAttribute("edit", "/editProfile");
                         model.addAttribute("hello",member);
                         model.addAttribute("method","POST");
