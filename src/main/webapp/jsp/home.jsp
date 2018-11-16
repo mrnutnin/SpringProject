@@ -13,7 +13,7 @@
   <h1 style="font-family:'Courier New'">
     Cryptocurrency Prices
   </h1>
-  <form action="${edit}" method="POST">
+  <form action="${edit}" method="${method}">
     <input type="hidden" name="permiss" value="${hello.permiss}">
     <input type="hidden" name="email" value="${hello.email}">
   <p style="font-family:'Courier New';color:black;">

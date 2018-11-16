@@ -32,14 +32,16 @@ public class ViewCoinController {
 
                member = memberDAO.getMember(email, password);
                if(member!=null){
-                    if (email.equals("admin@admin.com")) {
+                    if (member.getPermiss().equals("admin")) {
                         model.addAttribute("permiss", "ViewMember");
                         model.addAttribute("edit", "/listMember");
                         model.addAttribute("hello",member);
+                        model.addAttribute("method","GET");
                     } else {
                         model.addAttribute("permiss", "EditProfile");
                         model.addAttribute("edit", "/editProfile");
                         model.addAttribute("hello",member);
+                        model.addAttribute("method","POST");
 
                     }
                     CoinMarketList coinMarkets = CoinMarketCap.ticker().convert(Currency.USD).get();

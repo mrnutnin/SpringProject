@@ -47,11 +47,13 @@ public class PageController {
         return "/registered";
     }
 
-    @PostMapping("/listMember")
+    @GetMapping("/listMember")
     public String listMember(@RequestParam("permiss") String permiss, Model model) throws SQLException {
         if (permiss.equals("admin")) {
             ArrayList<Member> list = memberDAO.getAllMember();
             model.addAttribute("memberList", list);
+            model.addAttribute("email", "admin@admin.com");
+            model.addAttribute("pass", "admin");
             return "/list-Member";
         }
         return "/login-form";
@@ -59,8 +61,9 @@ public class PageController {
     }
 
     @GetMapping("/deleteMember")
-    public String deleteMember(@RequestParam("email") String email, Model model) throws SQLException {
+    public String deleteMember(@RequestParam("email") String email,@RequestParam("permiss") String permiss, Model model) throws SQLException {
         memberDAO.deleteMember(email);
+        model.addAttribute("permiss", permiss);
         return "/delete-result";
     }
 

@@ -32,7 +32,7 @@
 				<form class="login100-form validate-form" action="/updateMember" method="POST">
 				<a href="/"><img src="images/icons/favicon.ico" height="35" width="35"></a>
 					<span class="login100-form-title p-b-55">
-						Profile
+						Edit Profile
 					</span>
 
 					<!-- Email -->

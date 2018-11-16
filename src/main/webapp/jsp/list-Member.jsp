@@ -14,7 +14,7 @@
 <script>
 	function myFunction(email) {
 		if (confirm('Are you sure?')== true)
-		 window.location.href = '/deleteMember?email='+email;}
+    window.location.href = '/deleteMember?email='+email+'&permiss=admin';}
 </script>
 
 <body>
@@ -22,20 +22,24 @@
 <h1 style="font-family:'Courier New'">
     List Member
 </h1>
-<p style="font-family:'Courier New';color:black;">
-	<a href="/overview?email=${email}&password=${pass}" method="POST" style="color:White;">Back to overview</a>
+<p>
+<form action="/overview" method="POST"> 
+<input type="hidden" name="email" value="${email}">
+<input type="hidden" name="password" value="${pass}">
+<input type="submit" value="Back to Market">
+</form>
 </p>
 
 <main>
-  <table  class="table-fill">
+<table  class="table-fill">
 
-  <!-- Table Head -->
-    <thead>
-      <tr>
-        <th>Email</th>
-		<th>Password</th>
-        <th>Username</th>
-        <th>Phone</th>
+<!-- Table Head -->
+  <thead>
+    <tr>
+      <th>Email</th>
+  <th>Password</th>
+      <th>Username</th>
+      <th>Phone</th>
 		<th>#</th>
       </tr>
     </thead>
