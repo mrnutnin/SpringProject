@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.Map;
 
+//@XmlRootElement Associates a global element with the schema type to which the class is mapped.Default  Settings
 @XmlRootElement
 public final class CoinMarket {
 

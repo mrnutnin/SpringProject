@@ -32,19 +32,23 @@ public class PageController {
 
     @PostMapping("/addMember")
     public String addMember(@RequestParam("email") String email, @RequestParam("password") String password,
-            @RequestParam("username") String username, @RequestParam("phone") String phone, Model model)
+            @RequestParam("username") String username, @RequestParam("phone") String phone,@RequestParam("passwordConf") String passwordConf, Model model)
             throws SQLException {
-        Member m = memberDAO.getMemberForSignUp(email);
-        if (m != null) {
+        if(password.equals(passwordConf)){
+            Member m = memberDAO.getMemberForSignUp(email);
+            if (m != null) {
+                model.addAttribute("result", "Register Fail!!.");
+                model.addAttribute("detail", "This email is already used.");
+            } else {
+                member = new Member(email, password, username, phone, "user");
+                memberDAO.createMember(member);
+                model.addAttribute("result", "Registered !!.");
+                model.addAttribute("detail", "Welcome to Cryptocurrency Market!!");
+            }
+        }else{
             model.addAttribute("result", "Register Fail!!.");
-            model.addAttribute("detail", "This email is already used.");
-        } else {
-            member = new Member(email, password, username, phone, "user");
-            memberDAO.createMember(member);
-            model.addAttribute("result", "Registered !!.");
-            model.addAttribute("detail", "Welcome to Cryptocurrency Market!!");
+            model.addAttribute("detail", "Passwords do not match!");
         }
-
         return "/registered";
     }
 
