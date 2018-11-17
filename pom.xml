@@ -54,8 +54,6 @@
             <version>8.0.13</version>
 		</dependency>
   
- 
-
         <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -120,6 +118,38 @@
     </dependencies>
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-webapp-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                <deploymentType>jar</deploymentType>
+
+                <!-- configure app to run on port 80, required by App Service -->
+                <appSettings>
+                    <property> 
+                    <name>JAVA_OPTS</name> 
+                    <value>-Dserver.port=80</value> 
+                    </property> 
+                </appSettings>
+
+                <!-- Web App information -->
+                <resourceGroup>MrNut-Group</resourceGroup>
+                <appName>mrnut</appName>
+                <region>Southeast Asia</region>  
+
+                <!-- Java Runtime Stack for Web App on Linux-->
+                <linuxRuntime>jre8</linuxRuntime>
+                </configuration>
+                </plugin>
+
+
+
+
+
+
+
             <!-- maven compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
