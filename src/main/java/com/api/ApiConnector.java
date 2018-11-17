@@ -1,6 +1,5 @@
 package com.api;
 
-//import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.ApiResponse;
 
 import javax.ws.rs.client.Client;
@@ -11,19 +10,16 @@ import javax.ws.rs.core.MediaType;
 
 public class ApiConnector {
 
-    
-    //API version that is supported.
+    // API version that is supported.
     public static final String API_VERSION = "v2";
-    
-    //Base URL for API endpoints.
+
+    // Base URL for API endpoints.
     public static final String API_BASE_URL = "https://api.coinmarketcap.com/";
     private Client client;
-    //private ObjectMapper objectMapper;
     private WebTarget webTarget;
 
     public ApiConnector() {
         client = ClientBuilder.newClient();
-        //objectMapper = new ObjectMapper();
         webTarget = client.target(API_BASE_URL + API_VERSION + "/");
     }
 
@@ -45,7 +41,7 @@ public class ApiConnector {
         return prepareRequest().get(clazz);
     }
 
-     //Get API response
+    // Get API response
     public <T extends ApiResponse<?>> T getApiResponse(Class<T> clazz) {
         return prepareRequest().get(clazz);
     }

@@ -3,13 +3,8 @@ package com.controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.Member;
-import com.MemberDAO;
-import com.model.CoinMarket;
-import com.model.CoinMarketList;
-import com.model.Currency;
-import java.text.NumberFormat;
-import com.model.CoinMarketCap;
+import com.dao.Member;
+import com.dao.MemberDAO;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;

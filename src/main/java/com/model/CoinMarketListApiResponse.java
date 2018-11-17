@@ -1,5 +1,4 @@
 
-
 package com.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -12,7 +11,7 @@ public class CoinMarketListApiResponse extends ApiResponse<Map<String, CoinMarke
     // Constructs the response model.
     @JsonCreator
     public CoinMarketListApiResponse(@JsonProperty(JSON_DATA_PROPERTY) Map<String, CoinMarket> data,
-                                     @JsonProperty(JSON_METADATA_PROPERTY) Map<String, Object> metadata) {
+            @JsonProperty(JSON_METADATA_PROPERTY) Map<String, Object> metadata) {
         super(data, metadata);
     }
 }

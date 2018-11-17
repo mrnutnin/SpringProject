@@ -5,19 +5,18 @@ package com.model;
 public enum Currency {
 
     THB(),
-    USD(),
-    BTC(CurrencyType.CRYPTO),
-    ETH(CurrencyType.CRYPTO),
+    USD(), 
+    BTC(CurrencyType.CRYPTO), 
+    ETH(CurrencyType.CRYPTO), 
     XRP(CurrencyType.CRYPTO),
-    LTC(CurrencyType.CRYPTO),
+    LTC(CurrencyType.CRYPTO), 
     BCH(CurrencyType.CRYPTO);
 
     /*
-    private static Currency[] fiatCurrencies;
-    private static Currency[] cryptoCurrencies;
-    */
+     * private static Currency[] fiatCurrencies; private static Currency[]
+     * cryptoCurrencies;
+     */
     private final CurrencyType type;
-    
 
     Currency(CurrencyType type) {
         this.type = type;
@@ -32,33 +31,23 @@ public enum Currency {
     }
 
     enum CurrencyType {
-        FIAT,
-        CRYPTO
+        FIAT, CRYPTO
     }
 
     /*
-    public static Currency[] getFiatCurrencies() {
-        if (fiatCurrencies == null) {
-            fiatCurrencies = Arrays.stream(values()).filter(Currency::isFiat).toArray(Currency[]::new);
-        }
-        return fiatCurrencies;
-    }
+     * public static Currency[] getFiatCurrencies() { if (fiatCurrencies == null) {
+     * fiatCurrencies =
+     * Arrays.stream(values()).filter(Currency::isFiat).toArray(Currency[]::new); }
+     * return fiatCurrencies; }
+     * 
+     * public static Currency[] getCryptoCurrencies() { if (cryptoCurrencies ==
+     * null) { cryptoCurrencies =
+     * Arrays.stream(values()).filter(Currency::isCrypto).toArray(Currency[]::new);
+     * } return cryptoCurrencies; }
+     * 
+     * public boolean isFiat() { return CurrencyType.FIAT == this.type; }
+     * 
+     * public boolean isCrypto() { return CurrencyType.CRYPTO == this.type; }
+     */
 
-    public static Currency[] getCryptoCurrencies() {
-        if (cryptoCurrencies == null) {
-            cryptoCurrencies = Arrays.stream(values()).filter(Currency::isCrypto).toArray(Currency[]::new);
-        }
-        return cryptoCurrencies;
-    }
-
-    public boolean isFiat() {
-        return CurrencyType.FIAT == this.type;
-    }
-
-    public boolean isCrypto() {
-        return CurrencyType.CRYPTO == this.type;
-    }
-  */
-   
-  
 }
