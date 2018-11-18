@@ -24,6 +24,14 @@ public class PageController {
         memberDAO = new MemberDAO();
     }
 
+    /*
+    @GetMapping("/checkExist")
+    public String checkExist(@RequestParam("email") String email,Model model) throws SQLException {
+      
+        return "/exists?"+email;
+    }
+    */
+
     @GetMapping("/register")
     public String register(Model model) {
         // ..

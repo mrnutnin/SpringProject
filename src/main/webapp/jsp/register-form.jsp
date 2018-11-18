@@ -41,12 +41,13 @@
 
 					<!-- Email -->
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
+						<input class="input100" type="text" name="email" placeholder="Email" onblur="checkExist()>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-envelope"></span>
 						</span>
 					</div>
+					<div style="color: red" id="isE"></div>
 
 					<!-- Password -->
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
@@ -71,7 +72,7 @@
 
 					<!-- Username -->
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="username" placeholder="Username" onblur="">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 						</span>

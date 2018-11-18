@@ -112,6 +112,8 @@ public class MemberDAO {
 		return member; // ส่งกลับเป็น javabean
 	}
 
+
+
 	//Delete Member
 	public void deleteMember(String email) throws SQLException {
 		PreparedStatement pStatement = con.prepareStatement("DELETE FROM member WHERE email = ?");
