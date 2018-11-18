@@ -20,6 +20,7 @@ public abstract class ApiResponse<T> {
     public T getData() {
         return data;
     }
+    
     /*
      * public Map<String, Object> getMetadata() { return metadata; }
      * 
