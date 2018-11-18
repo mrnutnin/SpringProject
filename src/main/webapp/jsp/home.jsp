@@ -19,7 +19,7 @@
     <input type="hidden" name="email" value="${hello.email}">
     <input type="hidden" name="password" value="${hello.password}">
     <p style="font-family:'Courier New';color:black;">
-      Hello <span style="color:white;font-size:20px">${hello.username}</span> , Welcome back! , <button type="submit">${status}</button>
+      Hello <span style="color:white;font-size:26px">${hello.username}</span> , Welcome back! , <button type="submit">${status}</button>
     </p>
   </form>
 
