@@ -60,6 +60,13 @@
 
       </tbody>
 
+       <tfoot>
+        <tr>
+          <th colspan='7'><a href="/"><button>Logout</button></a></th>
+        </tr>
+      </tfoot>
+      
+
     </table>
   </main>
 
